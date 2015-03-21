@@ -1,10 +1,11 @@
 class InscritosController < ApplicationController
   before_action :set_inscrito, only: [:show, :edit, :update, :destroy]
+  before_action :is_logged, except: [:index, :new, :create, :ok]
 
   # GET /inscritos
   # GET /inscritos.json
   def index
-    @inscritos = Inscrito.all
+    redirect_to new_inscrito_path
   end
 
   # GET /inscritos/1
@@ -28,13 +29,14 @@ class InscritosController < ApplicationController
 
     respond_to do |format|
       if @inscrito.save
-        format.html { redirect_to @inscrito, notice: 'Inscrito was successfully created.' }
-        format.json { render :show, status: :created, location: @inscrito }
+        format.html { redirect_to ok_path, notice: 'Inscrito com sucesso' }
       else
         format.html { render :new }
-        format.json { render json: @inscrito.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def ok
   end
 
   # PATCH/PUT /inscritos/1
@@ -43,10 +45,8 @@ class InscritosController < ApplicationController
     respond_to do |format|
       if @inscrito.update(inscrito_params)
         format.html { redirect_to @inscrito, notice: 'Inscrito was successfully updated.' }
-        format.json { render :show, status: :ok, location: @inscrito }
       else
         format.html { render :edit }
-        format.json { render json: @inscrito.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +57,6 @@ class InscritosController < ApplicationController
     @inscrito.destroy
     respond_to do |format|
       format.html { redirect_to inscritos_url, notice: 'Inscrito was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -70,5 +69,11 @@ class InscritosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def inscrito_params
       params.require(:inscrito).permit(:nome, :email, :sexo, :nascimento, :cpf, :equipe, :modalidade, :termo_responsabilidade, :camiseta)
+    end
+
+    def is_logged
+      respond_to do |format|
+        format.html { redirect_to '/404', :status => :not_found }
+      end
     end
 end
