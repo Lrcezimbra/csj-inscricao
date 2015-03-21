@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Inscritos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Sexo</th>
+      <th>Nascimento</th>
+      <th>Cpf</th>
+      <th>Equipe</th>
+      <th>Modalidade</th>
+      <th>Termo responsabilidade</th>
+      <th>Camiseta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inscritos.each do |inscrito| %>
+      <tr>
+        <td><%= inscrito.nome %></td>
+        <td><%= inscrito.email %></td>
+        <td><%= inscrito.sexo %></td>
+        <td><%= inscrito.nascimento %></td>
+        <td><%= inscrito.cpf %></td>
+        <td><%= inscrito.equipe %></td>
+        <td><%= inscrito.modalidade %></td>
+        <td><%= inscrito.termo_responsabilidade %></td>
+        <td><%= inscrito.camiseta %></td>
+        <td><%= link_to 'Show', inscrito %></td>
+        <td><%= link_to 'Edit', edit_inscrito_path(inscrito) %></td>
+        <td><%= link_to 'Destroy', inscrito, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inscrito', new_inscrito_path %>

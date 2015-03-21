@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @inscrito.nome %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @inscrito.email %>
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @inscrito.sexo %>
+</p>
+
+<p>
+  <strong>Nascimento:</strong>
+  <%= @inscrito.nascimento %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @inscrito.cpf %>
+</p>
+
+<p>
+  <strong>Equipe:</strong>
+  <%= @inscrito.equipe %>
+</p>
+
+<p>
+  <strong>Modalidade:</strong>
+  <%= @inscrito.modalidade %>
+</p>
+
+<p>
+  <strong>Termo responsabilidade:</strong>
+  <%= @inscrito.termo_responsabilidade %>
+</p>
+
+<p>
+  <strong>Camiseta:</strong>
+  <%= @inscrito.camiseta %>
+</p>
+
+<%= link_to 'Edit', edit_inscrito_path(@inscrito) %> |
+<%= link_to 'Back', inscritos_path %>
