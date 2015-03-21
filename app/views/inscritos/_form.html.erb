@@ -12,6 +12,10 @@
     <% end %>
 
     <div class="field form-group">
+        <%= f.label "Tipo de inscrição *" %>
+        <%= f.select :tipo, ['Com kit - R$ 65,00', 'Sem kit - R$ 30,00' ,'Kids - R$ 40,00', 'Acima de 60 anos - R$ 45,00', 'Caminhada - R$ 65,00', 'Caminhada acima de 60 anos - R$ 45,00'], {include_blank: true}, class: 'form-control' %>
+    </div>
+    <div class="field form-group">
       <%= f.label 'Nome *' %><br>
       <%= f.text_field :nome, class: 'form-control' %>
     </div>

@@ -68,7 +68,7 @@ class InscritosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inscrito_params
-      params.require(:inscrito).permit(:nome, :email, :sexo, :nascimento, :cpf, :equipe, :modalidade, :termo_responsabilidade, :camiseta)
+      params.require(:inscrito).permit(:tipo, :nome, :email, :sexo, :nascimento, :cpf, :equipe, :modalidade, :termo_responsabilidade, :camiseta)
     end
 
     def is_logged
