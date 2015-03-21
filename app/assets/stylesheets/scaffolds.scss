@@ -1,3 +1,6 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 body {
   background-color: #fff;
   color: #333;
@@ -40,9 +43,10 @@ div {
 }
 
 .field_with_errors {
-  padding: 2px;
+  @extend .has-error;
+  /*padding: 2px;
   background-color: red;
-  display: table;
+  display: table;*/
 }
 
 #error_explanation {

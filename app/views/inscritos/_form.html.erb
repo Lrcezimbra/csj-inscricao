@@ -1,53 +1,64 @@
 <%= form_for(@inscrito) do |f| %>
-  <% if @inscrito.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@inscrito.errors.count, "error") %> prohibited this inscrito from being saved:</h2>
+    <% if @inscrito.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@inscrito.errors.count, "erro") %></h2>
 
-      <ul>
-      <% @inscrito.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @inscrito.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field form-group">
+      <%= f.label 'Nome *' %><br>
+      <%= f.text_field :nome, class: 'form-control' %>
     </div>
-  <% end %>
+    <div class="field form-group">
+      <%= f.label 'E-mail *' %><br>
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+    <div class="field form-group">
+      <%= f.label 'Sexo *' %><br>
+      <label class="checkbox-inline">
+        <%= f.radio_button :sexo, 'Masculino' %> Masculino
+      </label>
+      <label class="checkbox-inline">
+        <%= f.radio_button :sexo, 'Feminino' %> Feminino
+      </label>
+    </div>
+    <div class="field form-group">
+      <%= f.label 'Data de Nascimento *' %><br>
+      <%= f.date_select :nascimento, {prompt: { day: 'Dia', month: 'Mês', year: 'Ano' }, use_month_names: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembor', 'Outubro', 'Novembro','Dezembro'], start_year: Date.today.year, end_year: 1900, order: [:day, :month, :year]}, {class: 'form-control'}%>
+    </div>
+    <div class="field form-group">
+      <%= f.label 'CPF *' %><br>
+      <%= f.text_field :cpf, class: 'form-control' %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :equipe %><br>
+      <%= f.text_field :equipe, class: 'form-control' %>
+    </div>
+    <div class="field form-group">
+      <%= f.label 'Modalidade *' %><br>
+      <%= f.select :modalidade, ['5km', '10km', 'Kids', 'Caminhada'], {include_blank: true}, class: 'form-control' %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :camiseta %><br>
+      <%= f.select :camiseta, ['P', 'M', 'G', 'GG', 'Infantil nº 02', 'Infantil nº 04', 'Infantil nº 06', 'Infantil nº 08', 'Infantil nº 10'], {include_blank: true}, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :sexo %><br>
-    <%= f.text_field :sexo %>
-  </div>
-  <div class="field">
-    <%= f.label :nascimento %><br>
-    <%= f.date_select :nascimento %>
-  </div>
-  <div class="field">
-    <%= f.label :cpf %><br>
-    <%= f.text_field :cpf %>
-  </div>
-  <div class="field">
-    <%= f.label :equipe %><br>
-    <%= f.text_field :equipe %>
-  </div>
-  <div class="field">
-    <%= f.label :modalidade %><br>
-    <%= f.text_field :modalidade %>
-  </div>
-  <div class="field">
     <%= f.label :termo_responsabilidade %><br>
-    <%= f.check_box :termo_responsabilidade %>
-  </div>
-  <div class="field">
-    <%= f.label :camiseta %><br>
-    <%= f.text_field :camiseta %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <textarea class="form-control" rows="3" disabled="disabled">Todo participante ao inscrever-se  para a 6ª Corrida de São Jorgeassume toda a responsabilidade, se declarando gozar de plena saúde e ter treinado adequadamente para uma corrida, isentando os realizadores, organizadores e patrocinadores de quaisquer responsabilidades em caso de acidentes ou lesões.  Os realizadores, organizadores e patrocinadores não se responsabilizarão por acidentes ou danos que, por ventura, o atleta venha sofrer ou causar durante o período de realização do evento.  Os organizadores não se comprometerão com alojamento, guarda volumes, alimentação e quaisquer outras despesas efetuadas pelos inscritos.  Todos os assuntos técnicos e omissos neste regulamento serão resolvidos pela comissão organizadora da prova.  No ato da inscrição, o atleta ou responsável autoriza o realizador do evento a utilizar-se de todas e quaisquer imagens de sua participação na prova, sem ônus algum aos realizadores. Ao inscrever-se, o Atleta se declara conhecedor do Regulamento, não podendo alegar desconhecimento das normas apresentadas.</textarea>
+
+    <div class="field checkbox form-group">
+      <label>
+        <%= f.check_box :termo_responsabilidade %> Eu aceito os termos acima
+      </label>
+    </div>
+
+    <div class="actions form-group">
+      <%= f.submit "Inscrever-se", class: "btn btn-primary" %>
+    </div>
 <% end %>
